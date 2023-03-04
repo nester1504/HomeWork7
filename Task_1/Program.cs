@@ -1,4 +1,7 @@
-﻿double[,] GetMatrix(int rows, int cols)
+﻿bool check = false;
+int number = 0;
+
+double[,] GetMatrix(int rows, int cols)
 {
     double[,] matrix = new double[rows, cols]; 
     for (int i = 0; i < rows; i++) 
@@ -26,5 +29,27 @@ void PrintMatrix(double[,] matr)
     }
 }
 
-double[,] matrix = GetMatrix(4, 4);
+int ReadNumber()
+{
+    while (check == false)
+    {
+        string text = Console.ReadLine();
+        if (int.TryParse(text, out number))
+        {
+            check = true;
+        }
+        else
+        {
+            Console.WriteLine("Не удалось распознать число, поробуйте ещё раз");
+        }
+    }
+    check = false;
+    return number;
+}
+
+Console.WriteLine("Введите количество строк массива");
+int sizeRows = ReadNumber();
+Console.WriteLine("Введите количество столбцов массива");
+int sizeСols = ReadNumber();
+double[,] matrix = GetMatrix(sizeRows, sizeСols);
 PrintMatrix(matrix);
