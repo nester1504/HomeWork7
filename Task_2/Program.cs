@@ -50,14 +50,19 @@ void GetElement(int[,] matrixElement, int line, int column)
 {
     int sizeLine = matrixElement.GetLength(0);
     int sizeColumn = matrixElement.GetLength(1);
-            if (line > sizeLine || column > sizeColumn)
-            {
-                Console.WriteLine($"{line}(строчка) {column} (столбец) -> такого числа в массиве нет");
-            } else
-            {
-                Console.WriteLine($"{line}(строчка) {column} (столбец) -> число {matrixElement[line-1, column-1]}");
-            }
-        }
+    if (line > sizeLine || column > sizeColumn)
+    {
+        Console.WriteLine($"{line}(строчка) {column} (столбец) -> такого числа в массиве нет");
+    }
+    else if (line < 0 || column < 0)
+    {
+        Console.WriteLine("Строчки или столбцы не могут быть отрицательными");
+    }
+    else
+    {
+        Console.WriteLine($"{line}(строчка) {column} (столбец) -> число {matrixElement[line - 1, column - 1]}");
+    }
+}
 
 Console.WriteLine("Введите количество строк массива");
 int sizeRows = ReadNumber();
